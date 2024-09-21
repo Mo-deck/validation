@@ -22,7 +22,12 @@ form.addEventListener("submit", function(event){
         error.textContent = "Please enter a valid eamil address"
         return;
     }
-
+  //Password
+    if(password.length < 8){
+        error.textContent = "Password must be at least 8 characters long."
+        return
+    }
+ 
 
     error.textContent = "Registered successfully"
 })
