@@ -16,5 +16,13 @@ form.addEventListener("submit", function(event){
             return //codekan meshan ku jooji 
         }
     
+            //Email checking
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(!email.match(emailPattern)){
+        error.textContent = "Please enter a valid eamil address"
+        return;
+    }
+
+
     error.textContent = "Registered successfully"
 })
