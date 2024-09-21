@@ -10,6 +10,11 @@ form.addEventListener("submit", function(event){
     
     const error = document.querySelector('#error')
 
+        //username checking
+        if(username === ''){
+            error.textContent = "username is required"
+            return //codekan meshan ku jooji 
+        }
     
     error.textContent = "Registered successfully"
 })
