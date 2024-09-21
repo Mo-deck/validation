@@ -27,7 +27,11 @@ form.addEventListener("submit", function(event){
         error.textContent = "Password must be at least 8 characters long."
         return
     }
- 
+    //Confirm Password
+    if(password !== consfirmPassword){
+        error.textContent = "password do not match"
+        return
+    }
 
     error.textContent = "Registered successfully"
 })
