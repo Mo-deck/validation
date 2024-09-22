@@ -81,6 +81,7 @@ form.addEventListener("submit", function(event){
    const isUsernameValid = validateUsername()
    const isEmailValid = validateEmail()
    const isPasswordvalid = validatePassword()
+   const isConfirmPasswordvalid = validateConfirmPassword()
 
 
 
@@ -92,6 +93,9 @@ form.addEventListener("submit", function(event){
      return
    }else if(isPasswordvalid){
     password.focus()
+    return
+   }else if(isConfirmPasswordvalid){
+    consfirmPassword.focus()
     return
    }
 
@@ -131,6 +135,17 @@ form.addEventListener("submit", function(event){
         return false
     }else{
         setSuccess(password)
+        return true
+    }
+}
+
+
+function validateConfirmPassword(){
+    if(password.value !== confirmPassword.value){
+        SetError(confirmPassword, "Passwords do not match")
+        return false
+    }else{
+        setSuccess(confirmPassword)
         return true
     }
 }
