@@ -80,6 +80,8 @@ form.addEventListener("submit", function(event){
    
    const isUsernameValid = validateUsername()
    const isEmailValid = validateEmail()
+   const isPasswordvalid = validatePassword()
+
 
 
    if(!isUsernameValid){
@@ -88,7 +90,12 @@ form.addEventListener("submit", function(event){
    }else if(!isEmailValid){
      email.focus()
      return
+   }else if(isPasswordvalid){
+    password.focus()
+    return
    }
+
+
    success.textContent = "Registration successfully!"
 
 })
@@ -106,13 +113,24 @@ form.addEventListener("submit", function(event){
     }
 }
       //check eamil
-function validateEmail(){
+   function validateEmail(){
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if(!email.value.match(emailPattern)){
         SetError(email, "Please enter a valid email address");
         return false
     }else{
         setSuccess(email)
+        return true
+    }
+}
+
+  // check password
+   function validatePassword(){
+    if(password.value.length < 8){
+        SetError(password, "password must be at least  8 characters long.")
+        return false
+    }else{
+        setSuccess(password)
         return true
     }
 }
