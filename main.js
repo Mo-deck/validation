@@ -73,11 +73,27 @@ const success = document.querySelector('#success')
 
 form.addEventListener("submit", function(event){
     event.preventDefault()
+    error.textContent = ""
+    success.textContent = ""
+
    //validate fields
+   
    const isUsernameValid = validateUsername()
+   const isEmailValid = validateEmail()
+
+
+   if(!isUsernameValid){
+    username.focus()
+    return
+   }else if(!isEmailValid){
+     email.focus()
+     return
+   }
+   success.textContent = "Registration successfully!"
+
 })
 
- //check username
+    //check username
  function validateUsername(){
     if(username.value === ''){
         //error
@@ -89,6 +105,20 @@ form.addEventListener("submit", function(event){
         return true
     }
 }
+      //check eamil
+function validateEmail(){
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(!email.value.match(emailPattern)){
+        SetError(email, "Please enter a valid email address");
+        return false
+    }else{
+        setSuccess(email)
+        return true
+    }
+}
+
+
+
 
 function SetError(element, message){
     //show error class
