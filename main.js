@@ -106,7 +106,7 @@ form.addEventListener("submit", function(event){
 
     //check username
  function validateUsername(){
-    if(username.value === ''){
+    if(username.value.trim() === ''){
         //error
         SetError(username, 'Username is required')
         return false
@@ -141,6 +141,10 @@ form.addEventListener("submit", function(event){
 
 
 function validateConfirmPassword(){
+    if(password.value.trim() === "" || confirmPassword.value.trim() === ""){
+        SetError(consfirmPassword, "Password do not match")
+        return false
+    }
     if(password.value !== confirmPassword.value){
         SetError(confirmPassword, "Passwords do not match")
         return false
